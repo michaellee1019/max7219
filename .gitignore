@@ -1,0 +1,7 @@
+.DS_Store
+viam-server
+main
+archive.tar.gz
+dist
+build
+.venv
