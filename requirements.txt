@@ -1,2 +1,3 @@
+viam-sdk
 git+https://github.com/viam-labs/1liner
 luma.led-matrix
