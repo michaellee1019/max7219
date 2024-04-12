@@ -49,23 +49,29 @@ class MAX7219(Generic):
                 match drawing["type"]:
                     case "border":
                         self.border(draw)
+                    case "rectangle":
+                        pixels = drawing["pixels"]
+                        self.rectangle(draw, pixels)
                     case "text":
                         message = drawing["message"]
                         start_pixel = drawing["start_pixel"]
-                        font = drawing.get("font", "CP437_FONT")
+                        font = drawing.get("font")
                         self.text(draw, start_pixel, message, font)
                     case "point":
                         pixel = drawing["pixel"]
                         self.point(draw, pixel)
                     case "line":
                         pixels = drawing["pixels"]
-                        self.point(draw, pixels)
+                        width = drawing.get("width")
+                        self.line(draw, pixels, width)
         result["drawings"] = True
         return result
 
     def border(self, draw):
         draw.rectangle(self.device.bounding_box, outline="white")
 
+    def rectangle(self, draw, pixels: list[int]):
+        draw.rectangle(pixels, outline="white")
     def text(self, draw, start_pixel: list[int], message: str, font):
         font_cls = CP437_FONT
         if font is "LCD_FONT":
@@ -75,12 +81,19 @@ class MAX7219(Generic):
     def point(self, draw, pixel: list[int]):
         draw.point(pixel, fill="white")
 
-    def line(self, draw, pixels: list[int]):
-        draw.line(pixels, fill="white")
+    def line(self, draw, pixels: list[int], width):
+        if not width:
+            width=1
+        draw.line(pixels, fill="white", width=width)
 
     def reconfigure(self,
                     config: ComponentConfig,
                     dependencies: Mapping[ResourceName, ResourceBase]):
+        
+        #Cleanup the screen and previous drawings on reconfigure
+        if self.device is not None:
+            self.device.cleanup()
+
         spi_bus = int(config.attributes.fields["spi_bus"].string_value)
         chip_select = int(config.attributes.fields["chip_select"].string_value)
         block_orientation = int(config.attributes.fields["block_orientation"].number_value)

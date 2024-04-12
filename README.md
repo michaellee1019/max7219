@@ -17,6 +17,9 @@ The following config is used to control a single [HiLetgo MAX7219 Dot Matrix Mod
 ## DoCommand Examples
 A single DoCommand call will erase the display and draw a new canvas from scratch. Each DoCommand call can contain a list of drawings to be performed in a single frame, where the screen will not be cleared between each drawing.
 
+
+### Border
+Draws a border around the display using the provided width + height in the attributes of the component. This type has no options available to it.
 ```
 {
     "drawings": [
@@ -26,3 +29,105 @@ A single DoCommand call will erase the display and draw a new canvas from scratc
     ]
 }
 ```
+
+### Rectangle
+Draw a rectangle on the display. Options:
+- `pixels`: An array of integers representing the start and end pixels to draw the rectangle. Provide the coordinates a list of four integers like `[start_x, start_y, end_x, end_y]`.
+{
+    "drawings": [
+        {
+            "type": "rectangle",
+            "pixels": [
+                0,
+                0,
+                4,
+                5
+            ]
+        }
+    ]
+}
+
+### Text
+Write text to the display. Options:
+- `message`: The text to display
+- `start_pixel`: The xy coordinates to start the text. Helpful to center text visually. Provide the coordinates a list of two integers like `[x, y]`.
+- `font`: The font to use, defaults to `CP437_FONT` if not provided. The other option is `LCD_FONT` but this font isn't ideal for this display because its hight is greater than 8 pixels.
+```
+{
+    "drawings": [
+        {
+            "type": "text",
+            "message": "VIAM",
+            "start_pixel": [
+                3,
+                0
+            ]
+        }
+    ]
+}
+```
+
+### Point
+Light up a single pixel on the display. Options:
+- `pixel` The xy coordinates of the pixel. Provide the coordinates a list of two integers like `[x, y]`.
+
+{
+    "drawings": [
+        {
+            "type": "point",
+            "pixel": [
+                3,
+                0
+            ]
+        }
+    ]
+}
+
+### Line
+Draw a line of pixels on the display. Options:
+- `pixels`: An array of integers representing the start and end pixels to draw the line. Provide the coordinates a list of four integers like `[start_x, start_y, end_x, end_y]`.
+
+{
+    "drawings": [
+        {
+            "type": "line",
+            "pixels": [
+                0,
+                0,
+                0,
+                5
+            ]
+        }
+    ]
+}
+
+### Multiple drawings.
+Provide a list of drawings to place multiple elements on to the screen. The next DoCommand will erase the screen
+{
+    "drawings": [
+        {
+            "type": "point",
+            "pixel": [
+                0,
+                0
+            ]
+        },
+        {
+            "type": "text",
+            "message": "VIAM",
+            "start_pixel": [
+                3,
+                0
+            ]
+        },
+        {
+            "type": "line",
+            "pixels": [
+                31,
+                0,
+                31,
+                7
+            ]
+        }
+    ]
+}
