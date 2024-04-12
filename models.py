@@ -64,6 +64,8 @@ class MAX7219(Generic):
                         pixels = drawing["pixels"]
                         width = drawing.get("width")
                         self.line(draw, pixels, width)
+                    case "clear":
+                        self.clear(draw)
         result["drawings"] = True
         return result
 
@@ -86,6 +88,9 @@ class MAX7219(Generic):
         if not width:
             width=1
         draw.line(pixels, fill="white", width=width)
+
+    def clear(self, draw):
+        draw.clear()
 
     def reconfigure(self,
                     config: ComponentConfig,

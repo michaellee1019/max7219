@@ -102,6 +102,16 @@ Draw a line of pixels on the display. Options:
     ]
 }
 
+### Clear
+Erases all pixels on the display to show a blank screen.
+{
+    "drawings": [
+        {
+            "type": "clear"
+        }
+    ]
+}
+
 ### Multiple drawings.
 Provide a list of drawings to place multiple elements on to the screen. The next DoCommand will erase the screen
 {
