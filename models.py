@@ -61,7 +61,7 @@ class MAX7219(Generic):
                     dependencies: Mapping[ResourceName, ResourceBase]):
         spi_bus = int(config.attributes.fields["spi_bus"].string_value)
         chip_select = int(config.attributes.fields["chip_select"].string_value)
-        block_orientation = config.attributes.fields["chip_select"].number_value
+        block_orientation = config.attributes.fields["block_orientation"].number_value
         width = config.attributes.fields["width"].number_value
         height = config.attributes.fields["height"].number_value
         rotate = config.attributes.fields["rotate"].bool_value
