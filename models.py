@@ -46,7 +46,7 @@ class MAX7219(Generic):
         drawings = command.get("drawings")
         with canvas(self.device) as draw:
             for drawing in drawings:
-                match drawing.type:
+                match drawing["type"]:
                     case "border":
                         self.border(draw)
             
