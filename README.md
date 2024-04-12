@@ -51,7 +51,7 @@ Draw a rectangle on the display. Options:
 Write text to the display. Options:
 - `message`: The text to display
 - `start_pixel`: The xy coordinates to start the text. Helpful to center text visually. Provide the coordinates a list of two integers like `[x, y]`.
-- `font`: The font to use, defaults to `CP437_FONT` if not provided. The other option is `LCD_FONT` but this font isn't ideal for this display because its hight is greater than 8 pixels.
+- `font`: The font to use, defaults to `LCD_FONT` if not provided. The other option is `CP437_FONT` which provides thicker "bold" letters.
 ```
 {
     "drawings": [
@@ -61,7 +61,8 @@ Write text to the display. Options:
             "start_pixel": [
                 3,
                 0
-            ]
+            ],
+            "font": "CP437_FONT"
         }
     ]
 }

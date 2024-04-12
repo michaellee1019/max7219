@@ -72,11 +72,11 @@ class MAX7219(Generic):
 
     def rectangle(self, draw, pixels: list[int]):
         draw.rectangle(pixels, outline="white")
-        
+
     def text(self, draw, start_pixel: list[int], message: str, font):
-        font_cls = CP437_FONT
-        if font == "LCD_FONT":
-            font_cls = LCD_FONT
+        font_cls = LCD_FONT
+        if font == "CP437_FONT":
+            font_cls = CP437_FONT
         text(draw, start_pixel, message, fill="white", font=proportional(font_cls))
 
     def point(self, draw, pixel: list[int]):
