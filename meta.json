@@ -1,6 +1,6 @@
 {
   "module_id": "michaellee1019:max7219",
-  "visibility": "private",
+  "visibility": "public",
   "url": "https://github.com/michaellee1019/max7219",
   "description": "A VIAM module to support led matrices with a max7219 chip. The module is a wrapper of the 'luma.led-matrix' python library.",
   "models": [
