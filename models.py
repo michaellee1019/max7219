@@ -49,12 +49,34 @@ class MAX7219(Generic):
                 match drawing["type"]:
                     case "border":
                         self.border(draw)
-            
+                    case "text":
+                        message = drawing["message"]
+                        start_pixel = drawing["start_pixel"]
+                        font = drawing.get("font", "CP437_FONT")
+                        self.text(draw, start_pixel, message, font)
+                    case "point":
+                        pixel = drawing["pixel"]
+                        self.point(draw, pixel)
+                    case "line":
+                        pixels = drawing["pixels"]
+                        self.point(draw, pixels)
         result["drawings"] = True
         return result
 
     def border(self, draw):
         draw.rectangle(self.device.bounding_box, outline="white")
+
+    def text(self, draw, start_pixel: list[int], message: str, font):
+        font_cls = CP437_FONT
+        if font is "LCD_FONT":
+            font_cls = LCD_FONT
+        text(draw, start_pixel, message, fill="white", font=proportional(font_cls))
+
+    def point(self, draw, pixel: list[int]):
+        draw.point(pixel, fill="white")
+
+    def line(self, draw, pixels: list[int]):
+        draw.line(pixels, fill="white")
 
     def reconfigure(self,
                     config: ComponentConfig,
