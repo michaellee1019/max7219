@@ -17,7 +17,6 @@ The following config is used to control a single [HiLetgo MAX7219 Dot Matrix Mod
 ## DoCommand Examples
 A single DoCommand call will erase the display and draw a new canvas from scratch. Each DoCommand call can contain a list of drawings to be performed in a single frame, where the screen will not be cleared between each drawing.
 
-
 ### Border
 Draws a border around the display using the provided width + height in the attributes of the component. This type has no options available to it.
 ```
@@ -33,6 +32,7 @@ Draws a border around the display using the provided width + height in the attri
 ### Rectangle
 Draw a rectangle on the display. Options:
 - `pixels`: An array of integers representing the start and end pixels to draw the rectangle. Provide the coordinates a list of four integers like `[start_x, start_y, end_x, end_y]`.
+```
 {
     "drawings": [
         {
@@ -46,6 +46,7 @@ Draw a rectangle on the display. Options:
         }
     ]
 }
+```
 
 ### Text
 Write text to the display. Options:
@@ -71,7 +72,7 @@ Write text to the display. Options:
 ### Point
 Light up a single pixel on the display. Options:
 - `pixel` The xy coordinates of the pixel. Provide the coordinates a list of two integers like `[x, y]`.
-
+```
 {
     "drawings": [
         {
@@ -83,11 +84,12 @@ Light up a single pixel on the display. Options:
         }
     ]
 }
+```
 
 ### Line
 Draw a line of pixels on the display. Options:
 - `pixels`: An array of integers representing the start and end pixels to draw the line. Provide the coordinates a list of four integers like `[start_x, start_y, end_x, end_y]`.
-
+```
 {
     "drawings": [
         {
@@ -101,9 +103,11 @@ Draw a line of pixels on the display. Options:
         }
     ]
 }
+```
 
 ### Clear
 Erases all pixels on the display to show a blank screen.
+```
 {
     "drawings": [
         {
@@ -111,9 +115,11 @@ Erases all pixels on the display to show a blank screen.
         }
     ]
 }
+```
 
 ### Multiple drawings.
 Provide a list of drawings to place multiple elements on to the screen. The next DoCommand will erase the screen
+```
 {
     "drawings": [
         {
@@ -142,3 +148,4 @@ Provide a list of drawings to place multiple elements on to the screen. The next
         }
     ]
 }
+```
