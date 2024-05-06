@@ -3,6 +3,18 @@ A VIAM module to support led matrices with a max7219 chip. The module is a wrapp
 
 The module was tested with a 3 pack of [EC Buying MAX7219 Dot Matrix Modules](https://www.amazon.com/dp/B0BXDKHZL6)
 
+The first module should be wired to a raspberry pi in the following way:
+
+| Max Pin    | RPI Pin               |
+| --------   | -------               |
+| VCC        | Any 5v Pin            |
+| GND        | Any Ground Pin        |
+| DIN        | MOSI Pin 19 / GPIO 10 |
+| CS         | CE0 Pin 24 / GPIO 8   |
+| CLK        | SCLK Pin 23 / GPIO 11 |
+
+Based on the [official pinout diagram](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html) provided by Raspberry Pi
+
 ## Attribute Examples
 The following config is used to control a single [HiLetgo MAX7219 Dot Matrix Module](https://www.amazon.com/dp/B07FFV537V).
 ```
