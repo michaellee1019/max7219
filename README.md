@@ -1,16 +1,18 @@
 # michaellee1019:led_matrix:max7219
-A VIAM module to support led matrices with a max7219 chip. The module is a wrapper of the [luma.led-matrix](https://luma-led-matrix.readthedocs.io/en/latest/python-usage.html#x8-led-matrices) python library
+A VIAM module to support led matrices with a max7219 chip. The module is a wrapper of the [luma.led-matrix](https://luma-led-matrix.readthedocs.io/en/latest/python-usage.html#x8-led-matrices) python library.
+
+The module was tested with a 3 pack of [EC Buying MAX7219 Dot Matrix Modules](https://www.amazon.com/dp/B0BXDKHZL6)
 
 ## Attribute Examples
 The following config is used to control a single [HiLetgo MAX7219 Dot Matrix Module](https://www.amazon.com/dp/B07FFV537V).
 ```
 {
     "spi_bus":"0",
-    "chip_select":"0",
+    "device":"0",
     "block_orientation": 0,
-    "width": 8,
-    "height": 32,
-    "rotate": true
+    "width": 32,
+    "height": 24,
+    "rotate": 0
 }
 ```
 

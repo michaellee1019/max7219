@@ -101,16 +101,14 @@ class MAX7219(Generic):
             self.device.cleanup()
 
         spi_bus = int(config.attributes.fields["spi_bus"].string_value)
-        chip_select = int(config.attributes.fields["chip_select"].string_value)
+        device = int(config.attributes.fields["device"].string_value)
         block_orientation = int(config.attributes.fields["block_orientation"].number_value)
         width = int(config.attributes.fields["width"].number_value)
         height = int(config.attributes.fields["height"].number_value)
-        rotate = config.attributes.fields["rotate"].bool_value
-        if rotate:
-            rotate=1
+        rotate = int(config.attributes.fields["rotate"].number_value)
 
-        self.serial = spi(port=spi_bus, device=chip_select, gpio=noop(), block_orientation=block_orientation)
-        self.device = max7219(self.serial, width=width, height=height, rotate=rotate)
+        self.serial = spi(port=spi_bus, device=device, gpio=noop())
+        self.device = max7219(self.serial, width=width, height=height, rotate=rotate, block_orientation=block_orientation)
 
     @classmethod
     def validate_config(self, config: ComponentConfig) -> None:
