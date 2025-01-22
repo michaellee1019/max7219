@@ -6,7 +6,9 @@
   "models": [
     {
       "api": "rdk:component:generic",
-      "model": "michaellee1019:led_matrix:max7219"
+      "model": "michaellee1019:led_matrix:max7219",
+      "short_description": "Controls the display of many 8x8 led dot matrix displays with a max7219 chip.",
+      "markdown_link": "README.md#model-michaellee1019led_matrixmax7219"
     }
   ],
   "build": {
